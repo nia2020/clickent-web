@@ -30,7 +30,7 @@ export function CTASection() {
                 href="/contact"
                 className="mt-10 inline-block rounded-full bg-orange-600 px-10 py-4 text-base font-semibold text-white shadow-lg shadow-orange-600/25 transition hover:bg-orange-700"
               >
-                お問い合わせを申し込む
+                お問い合わせ
               </Link>
             </div>
           </div>
