@@ -12,10 +12,47 @@ const serviceOptions = [
 
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      company: String(formData.get("company") ?? ""),
+      name: String(formData.get("name") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      service: String(formData.get("service") ?? ""),
+      message: String(formData.get("message") ?? ""),
+      website: String(formData.get("website") ?? ""),
+    };
+
+    try {
+      const res = await fetch("/api/contact/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const data = (await res.json()) as { error?: string };
+
+      if (!res.ok) {
+        setError(data.error ?? "送信に失敗しました。時間をおいて再度お試しください。");
+        return;
+      }
+
+      setSubmitted(true);
+      form.reset();
+    } catch {
+      setError("通信エラーが発生しました。時間をおいて再度お試しください。");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -64,6 +101,20 @@ export function ContactForm() {
             onSubmit={handleSubmit}
             className="space-y-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"
           >
+            <div
+              className="absolute -left-[9999px] h-px w-px overflow-hidden"
+              aria-hidden="true"
+            >
+              <label htmlFor="website">ウェブサイト</label>
+              <input
+                id="website"
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <label htmlFor="company" className="text-sm text-slate-700">
@@ -71,9 +122,11 @@ export function ContactForm() {
                 </label>
                 <input
                   id="company"
+                  name="company"
                   type="text"
                   required
-                  className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100"
+                  disabled={submitting}
+                  className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100 disabled:opacity-60"
                   placeholder="株式会社○○"
                 />
               </div>
@@ -83,9 +136,11 @@ export function ContactForm() {
                 </label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
                   required
-                  className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100"
+                  disabled={submitting}
+                  className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100 disabled:opacity-60"
                   placeholder="山田 太郎"
                 />
               </div>
@@ -97,9 +152,11 @@ export function ContactForm() {
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 required
-                className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100"
+                disabled={submitting}
+                className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100 disabled:opacity-60"
                 placeholder="example@company.co.jp"
               />
             </div>
@@ -110,8 +167,10 @@ export function ContactForm() {
               </label>
               <select
                 id="service"
+                name="service"
                 required
-                className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100"
+                disabled={submitting}
+                className="mt-2 w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100 disabled:opacity-60"
               >
                 <option value="">選択してください</option>
                 {serviceOptions.map((opt) => (
@@ -128,18 +187,30 @@ export function ContactForm() {
               </label>
               <textarea
                 id="message"
+                name="message"
                 required
                 rows={5}
-                className="mt-2 w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100"
+                disabled={submitting}
+                className="mt-2 w-full resize-none rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-orange-400 focus:bg-white focus:ring-2 focus:ring-orange-100 disabled:opacity-60"
                 placeholder="ご相談内容をお書きください"
               />
             </div>
 
+            {error ? (
+              <p
+                role="alert"
+                className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+              >
+                {error}
+              </p>
+            ) : null}
+
             <button
               type="submit"
-              className="w-full rounded-full bg-orange-600 py-4 text-sm font-semibold text-white transition hover:bg-orange-700"
+              disabled={submitting}
+              className="w-full rounded-full bg-orange-600 py-4 text-sm font-semibold text-white transition hover:bg-orange-700 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              送信する
+              {submitting ? "送信中..." : "送信する"}
             </button>
           </form>
         )}

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy:zip": "echo '静的ZIP出力は廃止しました。Vercel では npm run build でデプロイしてください。' && exit 1",
     "export": "next build",
     "start": "next start",
     "lint": "eslint"
@@ -13,7 +14,8 @@
     "framer-motion": "^12.40.0",
     "next": "16.2.6",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "resend": "^6.12.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
