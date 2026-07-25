@@ -226,7 +226,7 @@ export const works = [
     result: "特設サイト制作",
     year: "2026",
     url: "https://dengeki-beppu.com/2027",
-    thumbnail: "/works/dengeki-beppu.png",
+    thumbnail: "/works/dengeki-beppu.jpg",
     featured: true,
   },
   {
