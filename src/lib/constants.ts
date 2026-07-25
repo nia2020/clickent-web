@@ -219,6 +219,18 @@ export const newsItems: NewsItem[] = [
 export const works = [
   {
     category: "WEB制作",
+    title: "電撃 BEPPU 2027",
+    subtitle: "音楽フェスティバル特設サイト制作",
+    description:
+      "JUN SKY WALKER(S)がプロデュースする、別府ビーコンプラザ開催の音楽フェスティバル「電撃 BEPPU 2027」の特設サイト。出演アーティスト情報やチケット案内など、イベントの世界観と最新情報が伝わるWeb体験を企画・制作しました。",
+    result: "特設サイト制作",
+    year: "2026",
+    url: "https://dengeki-beppu.com/2027",
+    thumbnail: "/works/dengeki-beppu.png",
+    featured: true,
+  },
+  {
+    category: "WEB制作",
     title: "スタートアップポップコーン株式会社",
     subtitle: "コーポレートサイト制作",
     description:

@@ -5,8 +5,10 @@ import { WorkCard } from "./WorkCard";
 import { SceneVisual } from "./visuals/SceneVisual";
 import { SectionDecor } from "./visuals/SectionDecor";
 
+const PREVIEW_COUNT = 2;
+
 export function WorksPreview() {
-  const featured = works.filter((w) => w.featured);
+  const featured = works.filter((w) => w.featured).slice(0, PREVIEW_COUNT);
 
   return (
     <section className="relative overflow-hidden bg-white py-32">
@@ -37,7 +39,7 @@ export function WorksPreview() {
         {featured.length > 0 && (
           <div className="mt-12 grid gap-6">
             {featured.map((work, i) => (
-              <WorkCard key={work.title} work={work} index={i} />
+              <WorkCard key={work.url ?? work.title} work={work} index={i} />
             ))}
           </div>
         )}

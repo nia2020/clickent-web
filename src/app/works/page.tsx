@@ -30,7 +30,7 @@ export default function WorksPage() {
               </h2>
               <div className="grid gap-6">
                 {featured.map((work, i) => (
-                  <WorkCard key={work.title} work={work} index={i} />
+                  <WorkCard key={work.url ?? work.title} work={work} index={i} />
                 ))}
               </div>
             </div>
@@ -43,7 +43,11 @@ export default function WorksPage() {
               </h2>
               <div className="grid gap-6">
                 {others.map((work, i) => (
-                  <WorkCard key={work.title} work={work} index={i + featured.length} />
+                  <WorkCard
+                    key={work.url ?? work.title}
+                    work={work}
+                    index={i + featured.length}
+                  />
                 ))}
               </div>
             </div>
