@@ -22,7 +22,7 @@ export default function AboutPage() {
         label="About Us"
         title="会社案内"
         description="未来を明るく照らしていきたい。福岡を拠点に、IT×採用で人と企業の未来を支えます。"
-        visual="network"
+        visual="browser"
       />
 
       <section className="relative overflow-hidden bg-white py-20">
@@ -75,7 +75,7 @@ export default function AboutPage() {
             <p className="text-sm font-medium tracking-widest text-orange-600 uppercase">
               Message
             </p>
-            <h2 className="mt-3 text-2xl font-bold text-slate-900 md:text-3xl">代表あいさつ</h2>
+            <h2 className="mt-3 text-2xl font-bold text-slate-900 md:text-3xl">代表挨拶</h2>
             <p className="mt-2 text-sm text-slate-500">{siteConfig.representative}</p>
             <blockquote className="relative mt-8 rounded-3xl border border-orange-100 bg-white/90 p-8 shadow-sm md:p-10">
               <span

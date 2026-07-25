@@ -13,7 +13,7 @@ export default function PrivacyPage() {
         label="Privacy Policy"
         title="プライバシーポリシー"
         description="当社は、お客様の個人情報の保護を重要な責務と考え、以下の方針に基づき適切に取り扱います。"
-        visual="network"
+        visual="browser"
       />
 
       <section className="bg-white pb-32">

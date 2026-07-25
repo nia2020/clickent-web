@@ -9,7 +9,7 @@ type PageHeroProps = {
   visual?: SceneVariant;
 };
 
-export function PageHero({ label, title, description, visual = "network" }: PageHeroProps) {
+export function PageHero({ label, title, description, visual = "browser" }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-orange-50/60 to-slate-50 pt-32 pb-20">
       <SectionDecor variant="blue" />

@@ -26,7 +26,7 @@ export default function WorksPage() {
           {featured.length > 0 && (
             <div className="mb-12">
               <h2 className="mb-6 text-sm font-medium tracking-widest text-orange-600 uppercase">
-                導入事例
+                WEB制作
               </h2>
               <div className="grid gap-6">
                 {featured.map((work, i) => (

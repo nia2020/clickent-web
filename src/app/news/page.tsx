@@ -16,7 +16,7 @@ export default function NewsPage() {
         label="News"
         title="お知らせ"
         description="最新のお知らせ・更新情報をご案内します。"
-        visual="network"
+        visual="browser"
       />
 
       <section className="bg-white pb-32">

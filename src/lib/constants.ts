@@ -254,12 +254,6 @@ export const works = [
     featured: true,
   },
   {
-    category: "WEB制作",
-    title: "コーポレートサイト・採用サイト制作",
-    result: "制作・運用実績多数",
-    year: "—",
-  },
-  {
     category: "新卒採用",
     title: "NRS（ネクストリクルーティング・システム）導入支援",
     result: "採用仕組みづくりを支援",

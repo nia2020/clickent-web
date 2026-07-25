@@ -50,7 +50,7 @@ const offerings = [
     accent: "from-rose-500 to-orange-400",
     bg: "from-rose-50/60 to-white",
     icon: <RecruitIconSeminar />,
-    visual: "network" as const,
+    visual: "recruitment" as const,
   },
   {
     number: "04",

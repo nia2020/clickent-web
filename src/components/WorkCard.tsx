@@ -32,11 +32,6 @@ export function WorkCard({ work, index = 0 }: { work: WorkItem; index?: number }
           <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs text-slate-600">
             {work.category}
           </span>
-          {work.featured && (
-            <span className="rounded-full bg-orange-600 px-3 py-1 text-xs font-medium text-white">
-              導入事例
-            </span>
-          )}
           <span className="text-xs text-slate-400">{work.year}</span>
         </div>
 

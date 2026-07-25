@@ -15,21 +15,16 @@ export function ServiceSection() {
     <section className="relative overflow-hidden bg-white py-32">
       <SectionDecor variant="cyan" />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid items-end gap-10 lg:grid-cols-2">
-          <FadeIn>
-            <p className="text-sm font-medium tracking-widest text-orange-600 uppercase">
-              Services
-            </p>
-            <h2 className="mt-4 max-w-2xl text-3xl font-bold text-slate-900 md:text-5xl">
-              3つの事業で、
-              <br />
-              成長のすべてを支援
-            </h2>
-          </FadeIn>
-          <FadeIn delay={0.1} className="hidden md:block">
-            <SceneVisual variant="network" size="sm" className="max-w-sm lg:ml-auto" />
-          </FadeIn>
-        </div>
+        <FadeIn>
+          <p className="text-sm font-medium tracking-widest text-orange-600 uppercase">
+            Services
+          </p>
+          <h2 className="mt-4 max-w-2xl text-3xl font-bold text-slate-900 md:text-5xl">
+            3つの事業で、
+            <br />
+            成長のすべてを支援
+          </h2>
+        </FadeIn>
 
         <div className="mt-16 grid gap-6 lg:grid-cols-3">
           {services.map((service, i) => (
