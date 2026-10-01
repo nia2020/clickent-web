@@ -219,6 +219,18 @@ export const newsItems: NewsItem[] = [
 export const works = [
   {
     category: "WEB制作",
+    title: "株式会社WORKERS CARE",
+    subtitle: "コーポレートサイト制作",
+    description:
+      "医療・介護・福祉の専門職ネットワークで地域課題に向き合う株式会社WORKERS CAREのコーポレートサイト。「すべての働くをもっと楽しく」という想いと、施設向け・企業向けサービスが伝わるWeb体験を企画・制作しました。",
+    result: "コーポレートサイト制作",
+    year: "2026",
+    url: "https://workers-care.jp/",
+    thumbnail: "/works/workers-care.jpg",
+    featured: true,
+  },
+  {
+    category: "WEB制作",
     title: "電撃 BEPPU 2027",
     subtitle: "音楽フェスティバル特設サイト制作",
     description:

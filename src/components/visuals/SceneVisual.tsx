@@ -328,7 +328,7 @@ function WorksScene() {
           whileInView={{ opacity: 1, y: 0, rotate: card.rotate }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.12 }}
-          className={`hero-float-delayed absolute w-3/4 rounded-xl border border-slate-200/80 bg-gradient-to-br ${card.color} p-3 shadow-lg backdrop-blur`}
+          className={`absolute w-3/4 rounded-xl border border-slate-200/80 bg-gradient-to-br ${card.color} p-3 shadow-lg backdrop-blur`}
           style={{ left: card.x, top: i * 16 }}
         >
           <div className="h-2 w-1/2 rounded bg-white/80" />
@@ -462,11 +462,11 @@ export function SceneVisual({
       <motion.div
         initial={{ opacity: 0, y: 30, scale: 0.95 }}
         whileInView={{ opacity: 1, y: 0, scale: 1 }}
-        viewport={{ once: true, margin: "-40px" }}
+        viewport={{ once: true }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className={`hero-float-delayed absolute ${insetClass}`}
+        className={`absolute ${insetClass}`}
       >
-        {scenes[variant]}
+        <div className="hero-float-delayed h-full">{scenes[variant]}</div>
       </motion.div>
     </div>
   );
